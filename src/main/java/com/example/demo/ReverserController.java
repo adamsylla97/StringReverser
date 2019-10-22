@@ -10,11 +10,12 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/")
 public class ReverserController {
 
-    @Autowired
-    Reverser reverser;
-
     @GetMapping("reverse/{value}")
     public String reverseString(@PathVariable String value){
-        return reverser.reverseString(value);
+        StringBuilder newValue = new StringBuilder();
+        for(int i=0; i<value.length(); i++){
+            newValue.append(value.charAt(value.length() -1 -i));
+        }
+        return newValue.toString();
     }
 }
